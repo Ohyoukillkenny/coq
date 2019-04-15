@@ -69,6 +69,8 @@ Fixpoint eqb (n m : nat) : bool :=
             end
   end.
 
+Notation "x =? y" := (eqb x y) (at level 70) : nat_scope.
+
 Fixpoint leb (n m : nat) : bool :=
   match n with
   | O => true
@@ -107,10 +109,43 @@ Proof.
   reflexivity.
   Qed.
 
+Theorem mult_0_plus : forall n m : nat,
+  (0 + n) * m = n * m.
+Proof.
+  intros n m.
+  rewrite -> plus_O_n.
+  reflexivity. Qed.
+
+Theorem plus_1_l : forall n:nat, 1 + n = S n.
+Proof.
+  intros n. reflexivity. Qed.
 
 
+Theorem mult_S_1 : forall n m : nat,
+  m = S n ->
+  m * (1 + n) = m * m.
+Proof.
+  intros n m.
+  intros H.
+  rewrite -> H.
+  rewrite <- plus_1_l.
+  reflexivity. Qed.
+  (* (N.b. This proof can actually be completed with tactics other than
+     rewrite, but please do use rewrite for the sake of the exercise.) *)
 
+Theorem plus_1_neq_0 : forall n : nat,
+  (n + 1) =? 0 = false.
+Proof.
+  intros n. destruct n as [| n'] eqn:E.
+  - reflexivity.
+  - reflexivity. Qed.
 
+Theorem negb_involutive : forall b : bool,
+  negb (negb b) = b.
+Proof.
+  intros b. destruct b eqn:E.
+  -reflexivity. 
+  -reflexivity. Qed.
 
 
 
