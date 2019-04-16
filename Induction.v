@@ -1,4 +1,5 @@
-Require Export Basics.
+Require Export Basic.
+Module Induction.
 
 Theorem plus_n_O : forall n:nat, n = n + 0.
 Proof.
@@ -84,6 +85,13 @@ Proof.
     reflexivity.
 Qed.
 
+Theorem plus_rearrange : forall n m p q : nat,
+  (n + m) + (p + q) = (m + n) + (p + q).
+Proof.
+  intros n m p q.
+  assert (H: n + m = m + n).
+  { rewrite -> plus_comm. reflexivity. }
+  rewrite -> H. reflexivity. Qed.
 
 
 
@@ -99,4 +107,5 @@ Qed.
 
 
 
+End Induction.
 (* END OF FILE*)
