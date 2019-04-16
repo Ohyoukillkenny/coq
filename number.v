@@ -133,12 +133,6 @@ Proof.
   (* (N.b. This proof can actually be completed with tactics other than
      rewrite, but please do use rewrite for the sake of the exercise.) *)
 
-Theorem plus_1_neq_0 : forall n : nat,
-  (n + 1) =? 0 = false.
-Proof.
-  intros n. destruct n as [| n'] eqn:E.
-  - reflexivity.
-  - reflexivity. Qed.
 
 Theorem negb_involutive : forall b : bool,
   negb (negb b) = b.
@@ -146,6 +140,45 @@ Proof.
   intros b. destruct b eqn:E.
   -reflexivity. 
   -reflexivity. Qed.
+
+Theorem plus_1_neq_0 : forall n : nat,
+  (n + 1) =? 0 = false.
+Proof.
+  intros [|n].
+  - reflexivity.
+  - reflexivity. Qed.
+
+Theorem andb_commutative : 
+  forall b c, andb b c = andb c b.
+Proof.
+  intros [] [].
+  - reflexivity.
+  - reflexivity.
+  - reflexivity.
+  - reflexivity.
+Qed.
+
+Theorem andb_true_elim2 : forall b c: bool,
+  andb b c = true -> c = true.
+Proof.
+  intros b c H.
+  destruct c eqn:Ec.
+   { reflexivity. }
+   { rewrite <- H.
+      destruct b eqn:Eb.
+      { reflexivity. }
+      { reflexivity. } }
+Qed.
+
+Theorem zero_nbeq_plus_1 : forall n : nat,
+  0 =? (n + 1) = false.
+Proof.
+  intros [|n].
+  - reflexivity.
+  - reflexivity.
+Qed.
+
+
 
 
 
