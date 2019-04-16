@@ -215,7 +215,11 @@ Example test_member2: member 2 [1;4;1] = false.
 reflexivity. Qed.
 
 
+(*
 
+skip a lot of bag related proofs
+
+*)
 
 
 
