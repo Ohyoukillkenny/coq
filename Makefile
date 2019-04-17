@@ -1,4 +1,4 @@
-VOFILES := Basic.vo Induction.vo
+VOFILES := Basic.vo Induction.vo Lists.vo
 
 .PHONY: all clean
 
