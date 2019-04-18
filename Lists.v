@@ -215,11 +215,39 @@ Example test_member2: member 2 [1;4;1] = false.
 reflexivity. Qed.
 
 
-(*
+Fixpoint remove_one (v:nat) (s:bag) : bag := 
+  match 
 
-skip a lot of bag related proofs
 
-*)
+Example test_remove_one1:
+  count 5 (remove_one 5 [2;1;5;4;1]) = 0.
+reflexivity. Qed.
+Example test_remove_one2:
+  count 5 (remove_one 5 [2;1;4;1]) = 0.
+reflexivity. Qed.
+Example test_remove_one3:
+  count 4 (remove_one 5 [2;1;4;5;1;4]) = 2.
+reflexivity. Qed.
+Example test_remove_one4:
+  count 5 (remove_one 5 [2;1;5;4;5;1;4]) = 1.
+reflexivity. Qed.
+
+Fixpoint remove_all (v:nat) (s:bag) : bag
+  (* REPLACE THIS LINE WITH ":= _your_definition_ ." *). Admitted.
+Example test_remove_all1: count 5 (remove_all 5 [2;1;5;4;1]) = 0.
+ (* FILL IN HERE *) Admitted.
+Example test_remove_all2: count 5 (remove_all 5 [2;1;4;1]) = 0.
+ (* FILL IN HERE *) Admitted.
+Example test_remove_all3: count 4 (remove_all 5 [2;1;4;5;1;4]) = 2.
+ (* FILL IN HERE *) Admitted.
+Example test_remove_all4: count 5 (remove_all 5 [2;1;5;4;5;1;4;5;1;4]) = 0.
+ (* FILL IN HERE *) Admitted.
+Fixpoint subset (s1:bag) (s2:bag) : bool
+  (* REPLACE THIS LINE WITH ":= _your_definition_ ." *). Admitted.
+Example test_subset1: subset [1;2] [2;1;4;1] = true.
+ (* FILL IN HERE *) Admitted.
+Example test_subset2: subset [1;2;2] [2;1;4;1] = false.
+ (* FILL IN HERE *) Admitted.
 
 
 
